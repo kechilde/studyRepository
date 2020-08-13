@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+       	http://www.springframework.org/schema/beans
+	    http://www.springframework.org/schema/beans/spring-beans.xsd    
+	    http://www.springframework.org/schema/context
+	    http://www.springframework.org/schema/context/spring-context.xsd
+	    http://www.springframework.org/schema/mvc
+	    http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+  
+	    <!-- 启用基于Spring 基于 annotation的DI，使用户可以在Spring MVC中使用Spring的强大功能
+	    	激活@Required @Autowired @Resource这样的注解。
+	    	不过如果使用了<context:component-scan>标签，扫描所有类型的bean的情况下，
+	    	是可以不用配置这个标签的 
+	    	<context:annotation-config/>
+ 		-->
+ 		
+ 		
+	    <!-- 1.  扩充了注解驱动，可以将参数绑定到控制器参数 
+	     	 	  开启SpringMVC注解模式 -->
+	    <mvc:annotation-driven/> 
+ 
+	    <!--2.  静态资源的处理，css,js,img... -->
+	    <mvc:resources location="/resources/" mapping="/resources/**"/>
+	    <mvc:default-servlet-handler/>
+ 
+	    <!--3.  ViewResolver:视图解析器。可以配置多个 但是一定要将这个ViewResolver(InternalResourceViewResolver)
+	    	放到最后 -->
+	    <bean id="viewResolver"
+	    	class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	        <property name="prefix" value="/WEB-INF/html/" />    
+	        <property name="suffix" value=".html" />
+	    </bean>
+	    <!-- 文件上传解析器 -->
+	    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	    	<property name="defaultEncoding" value="utf-8"></property>
+	    	<property name="maxUploadSize" value="20971502"></property>
+	    	<property name="maxInMemorySize" value="20971520"></property>
+	    </bean>  
+	    
+	    <!--4. 扫描web相关的bean -->
+	    <context:component-scan base-package="com.zjl.o2o.web"></context:component-scan>
+</beans>

@@ -1,0 +1,25 @@
+@charset "UTF-8";
+.index-banner{
+	width:100%;
+}
+.index-banner img{
+	width:100%;
+	height:100%;
+}
+.shop-desc{
+	font-size:.5rem;
+	margin:0;
+}
+.word{
+	float:left;
+	width:60%;
+}
+.shop-classify-img-warp{
+	float:right;
+	width:40%;
+}
+.shop-img{
+	width:50%;
+	margin-top: 16px;
+	border-radius: 50px;
+}

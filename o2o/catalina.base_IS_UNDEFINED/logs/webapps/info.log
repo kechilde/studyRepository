@@ -1,0 +1,3 @@
+2019-11-06 11:16:12.587 [main] DEBUG c.z.o.d.ProductImgDao.deleteProductImgByProductId - ==>  Preparing: DELETE FROM tb_product_img WHERE product_id=? 
+2019-11-06 11:16:12.727 [main] DEBUG c.z.o.d.ProductImgDao.deleteProductImgByProductId - ==> Parameters: 2(Long)
+2019-11-06 11:16:12.760 [main] DEBUG c.z.o.d.ProductImgDao.deleteProductImgByProductId - <==    Updates: 2
